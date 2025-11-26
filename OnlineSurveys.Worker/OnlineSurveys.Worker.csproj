@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-OnlineSurveys.Worker-c86d647b-33e3-453d-b852-5453b3e06b88</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineSurveys.Application\OnlineSurveys.Application.csproj" />
+    <ProjectReference Include="..\OnlineSurveys.Infrastructure\OnlineSurveys.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
