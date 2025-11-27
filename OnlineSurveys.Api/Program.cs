@@ -25,7 +25,7 @@ builder.Services.AddDbContext<SurveysDbContext>(options =>
 
 var app = builder.Build();
 
-// Swagger só em desenvolvimento (pode ajustar depois)
+// Swagger só em desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
