@@ -68,7 +68,7 @@ Essa arquitetura foi pensada para equilibrar:
 
 ### 1. Contexto (C4 - Level 1)
 
-![OnlineSurveys - Containers](https://raw.githubusercontent.com/claudiojccoimbra/OnlineSurveys/main/docs/c4-containers.png)
+![OnlineSurveys - Containers](https://raw.githubusercontent.com/claudiojccoimbra/OnlineSurveys/master/docs/c4-context.png)
 
 ### 2. Containers (C4 - Level 2)
 
