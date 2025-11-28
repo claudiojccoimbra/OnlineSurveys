@@ -80,6 +80,7 @@ OnlineSurveys.Api.Tests/       -> Testes automatizados da API (xUnit + EF Core I
 
 
 
+
 ---
 
 ## Diagramas C4
@@ -95,4 +96,3 @@ OnlineSurveys.Api.Tests/       -> Testes automatizados da API (xUnit + EF Core I
 ### 3. Visão de Testes
 
 ![OnlineSurveys - Visão de Testes](docs/c4-tests.png)
-
