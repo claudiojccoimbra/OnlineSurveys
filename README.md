@@ -63,25 +63,6 @@ Essa arquitetura foi pensada para equilibrar:
 
 ---
 
-## Estrutura da solution
-
-```text
-OnlineSurveys.sln
-
-OnlineSurveys.Api/             -> API REST (ASP.NET Core Web API)
-OnlineSurveys.Web/             -> Front-end MVC/Razor, consome a API via HttpClient
-OnlineSurveys.Worker/          -> Worker de agregação (processamento assíncrono)
-
-OnlineSurveys.Domain/          -> Entidades de domínio (Questionnaire, Question, Choice, Answer)
-OnlineSurveys.Application/     -> Camada de aplicação (use-cases) - extensão futura
-OnlineSurveys.Infrastructure/  -> EF Core, DbContext, repositórios, infraestrutura
-
-OnlineSurveys.Api.Tests/       -> Testes automatizados da API (xUnit + EF Core InMemory)
-
-
-
-
----
 
 ## Diagramas C4
 
@@ -96,4 +77,22 @@ OnlineSurveys.Api.Tests/       -> Testes automatizados da API (xUnit + EF Core I
 ### 3. Visão de Testes
 
 ![OnlineSurveys - Containers](https://raw.githubusercontent.com/claudiojccoimbra/OnlineSurveys/master/docs/c4-tests.png)
+
+
+---
+
+## Estrutura da solution
+
+```text
+OnlineSurveys.sln
+
+OnlineSurveys.Api/             -> API REST (ASP.NET Core Web API)
+OnlineSurveys.Web/             -> Front-end MVC/Razor, consome a API via HttpClient
+OnlineSurveys.Worker/          -> Worker de agregação (processamento assíncrono)
+
+OnlineSurveys.Domain/          -> Entidades de domínio (Questionnaire, Question, Choice, Answer)
+OnlineSurveys.Application/     -> Camada de aplicação (use-cases) - extensão futura
+OnlineSurveys.Infrastructure/  -> EF Core, DbContext, repositórios, infraestrutura
+
+OnlineSurveys.Api.Tests/       -> Testes automatizados da API (xUnit + EF Core InMemory)
 
