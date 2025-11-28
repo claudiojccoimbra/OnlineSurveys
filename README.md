@@ -87,12 +87,13 @@ OnlineSurveys.Api.Tests/       -> Testes automatizados da API (xUnit + EF Core I
 
 ### 1. Contexto (C4 - Level 1)
 
-![OnlineSurveys - Contexto](docs/c4-context.png)
+![OnlineSurveys - Containers](https://raw.githubusercontent.com/claudiojccoimbra/OnlineSurveys/main/docs/c4-containers.png)
 
 ### 2. Containers (C4 - Level 2)
 
-![OnlineSurveys - Containers](docs/c4-containers.png)
+![OnlineSurveys - Containers](https://raw.githubusercontent.com/claudiojccoimbra/OnlineSurveys/master/docs/c4-containers.png)
 
 ### 3. Visão de Testes
 
-![OnlineSurveys - Visão de Testes](docs/c4-tests.png)
+![OnlineSurveys - Containers](https://raw.githubusercontent.com/claudiojccoimbra/OnlineSurveys/master/docs/c4-tests.png)
+
