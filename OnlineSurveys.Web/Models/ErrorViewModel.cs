@@ -1,4 +1,4 @@
-namespace OnlineSurveys.Web.Models
+﻿namespace OnlineSurveys.Web.Models
 {
     public class ErrorViewModel
     {
