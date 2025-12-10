@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace OnlineSurveys.Domain.Entities;
 
@@ -18,6 +19,7 @@ public class Questionnaire
 
     public DateTime EndsAt { get; set; }
 
+    // Navegação "pra frente" (ok serializar)
     public ICollection<Question> Questions { get; set; } = new List<Question>();
 }
 
@@ -38,6 +40,8 @@ public class Question
     /// </summary>
     public int Order { get; set; }
 
+    // 👇 NÃO serializar essa navegação de volta para evitar ciclo
+    [JsonIgnore]
     public Questionnaire Questionnaire { get; set; } = null!;
 
     public ICollection<Choice> Choices { get; set; } = new List<Choice>();
@@ -60,5 +64,7 @@ public class Choice
     /// </summary>
     public int Order { get; set; }
 
+    // 👇 Mesma ideia aqui
+    [JsonIgnore]
     public Question Question { get; set; } = null!;
 }

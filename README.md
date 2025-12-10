@@ -63,7 +63,6 @@ Essa arquitetura foi pensada para equilibrar:
 
 ---
 
-
 ## Diagramas C4
 
 ### 1. Contexto (C4 - Level 1)
@@ -78,21 +77,35 @@ Essa arquitetura foi pensada para equilibrar:
 
 ![OnlineSurveys - Containers](https://raw.githubusercontent.com/claudiojccoimbra/OnlineSurveys/master/docs/c4-tests.png)
 
-
 ---
 
-## Estrutura da solution
+## Como testar a API pelo Swagger
 
-```text
-OnlineSurveys.sln
+Com a API (`OnlineSurveys.Api`) em execução, acesse o Swagger em:
 
-OnlineSurveys.Api/             -> API REST (ASP.NET Core Web API)
-OnlineSurveys.Web/             -> Front-end MVC/Razor, consome a API via HttpClient
-OnlineSurveys.Worker/          -> Worker de agregação (processamento assíncrono)
+`http://localhost:5222/swagger/index.html`
 
-OnlineSurveys.Domain/          -> Entidades de domínio (Questionnaire, Question, Choice, Answer)
-OnlineSurveys.Application/     -> Camada de aplicação (use-cases) - extensão futura
-OnlineSurveys.Infrastructure/  -> EF Core, DbContext, repositórios, infraestrutura
+Lá você consegue testar os endpoints da API diretamente pelo navegador.
 
-OnlineSurveys.Api.Tests/       -> Testes automatizados da API (xUnit + EF Core InMemory)
+### Exemplo de execução: POST /api/Questionnaires
 
+1. Acesse: `http://localhost:5222/swagger/index.html`
+2. Expanda o endpoint **POST /api/Questionnaires**
+3. No campo **Request body**, cole o JSON abaixo:
+   ```json
+   {
+     "title": "Intenção de voto - Prefeito",
+     "description": "Pesquisa de intenção de voto para as eleições municipais",
+     "startsAt": "2025-01-01T00:00:00Z",
+     "endsAt": "2025-01-31T23:59:59Z",
+     "questions": [
+       {
+         "text": "Em quem você pretende votar para prefeito?",
+         "choices": [
+           { "text": "Candidato A" },
+           { "text": "Candidato B" },
+           { "text": "Branco/Nulo" }
+         ]
+       }
+     ]
+   }

@@ -1,11 +1,18 @@
-using Microsoft.EntityFrameworkCore;
+Ôªøusing Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using OnlineSurveys.Infrastructure.Persistence;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Controllers
-builder.Services.AddControllers();
+// Controllers + JSON
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    });
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -15,25 +22,22 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "OnlineSurveys API",
         Version = "v1",
-        Description = "API para criaÁ„o de question·rios, registro de respostas e consulta de resultados."
+        Description = "API para cria√ß√£o de question√°rios, registro de respostas e consulta de resultados."
     });
 });
 
-// DbContext
+// DbContext em mem√≥ria (mock)
 builder.Services.AddDbContext<SurveysDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SurveysDb")));
+    options.UseInMemoryDatabase("OnlineSurveysDb"));
 
 var app = builder.Build();
 
-// Swagger sÛ em desenvolvimento
-if (app.Environment.IsDevelopment())
+// Swagger sempre habilitado
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "OnlineSurveys API v1");
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "OnlineSurveys API v1");
+});
 
 app.UseHttpsRedirection();
 
