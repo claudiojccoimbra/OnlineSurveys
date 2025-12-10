@@ -85,7 +85,6 @@ Com a API (`OnlineSurveys.Api`) em execução, acesse o Swagger em:
 
 `http://localhost:5222/swagger/index.html`
 
-Lá você consegue testar os endpoints da API diretamente pelo navegador.
 
 ### Exemplo de execução: POST /api/Questionnaires
 
