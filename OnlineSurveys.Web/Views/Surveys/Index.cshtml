@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OnlineSurveys.Web.Models.QuestionnaireViewModel>
+
+@{
+    ViewData["Title"] = "Questionários";
+}
+
+<h1>Questionários</h1>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error as string))
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+@if (Model is null || !Model.Any())
+{
+    <p>Não há questionários cadastrados.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Início</th>
+                <th>Fim</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var q in Model)
+            {
+                <tr>
+                    <td>@q.Title</td>
+                    <td>@q.StartsAt.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@q.EndsAt.ToString("dd/MM/yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
