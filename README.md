@@ -1,5 +1,24 @@
 # OnlineSurveys 🎯
 
+
+### Testes com Postman
+
+Além do Swagger, foi entregue uma coleção Postman para facilitar os testes manuais da API.
+
+**Arquivo da coleção:**
+
+`docs/postman/OnlineSurveys.postman_collection.json`
+
+#### Como executar
+
+1. Clonar o repositório:
+   ```bash
+   git clone https://github.com/claudiojccoimbra/OnlineSurveys.git
+
+
+
+
+
 Plataforma de **questionários online** construída em **.NET 9**, focada em pesquisas públicas em larga escala
 (ex.: pesquisas de intenção de voto nas eleições).
 
