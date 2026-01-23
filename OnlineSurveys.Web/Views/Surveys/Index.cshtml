@@ -1,21 +1,14 @@
 ﻿@model IEnumerable<OnlineSurveys.Web.Models.QuestionnaireViewModel>
 
 @{
-    ViewData["Title"] = "Questionários";
+    ViewData["Title"] = "Questionários disponíveis";
 }
 
-<h1>Questionários</h1>
+<h1>@ViewData["Title"]</h1>
 
-@if (!string.IsNullOrEmpty(ViewBag.Error as string))
+@if (!Model.Any())
 {
-    <div class="alert alert-danger">
-        @ViewBag.Error
-    </div>
-}
-
-@if (Model is null || !Model.Any())
-{
-    <p>Não há questionários cadastrados.</p>
+    <p>Nenhum questionário cadastrado.</p>
 }
 else
 {
@@ -24,7 +17,7 @@ else
             <tr>
                 <th>Título</th>
                 <th>Início</th>
-                <th>Fim</th>
+                <th>Término</th>
             </tr>
         </thead>
         <tbody>
@@ -32,8 +25,8 @@ else
             {
                 <tr>
                     <td>@q.Title</td>
-                    <td>@q.StartsAt.ToString("dd/MM/yyyy HH:mm")</td>
-                    <td>@q.EndsAt.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@q.StartsAt.ToString("dd/MM/yyyy")</td>
+                    <td>@q.EndsAt.ToString("dd/MM/yyyy")</td>
                 </tr>
             }
         </tbody>

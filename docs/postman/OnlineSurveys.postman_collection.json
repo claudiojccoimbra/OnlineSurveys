@@ -1,0 +1,61 @@
+{
+  "info": {
+    "_postman_id": "7a2c5c2d-0000-0000-0000-000000000001",
+    "name": "OnlineSurveys API",
+    "description": "Coleção de testes da API OnlineSurveys (Questionnaires).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Questionnaires - GET all",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5222/api/Questionnaires",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5222",
+          "path": ["api", "Questionnaires"]
+        }
+      }
+    },
+    {
+      "name": "Questionnaires - GET by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5222/api/Questionnaires/{{id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5222",
+          "path": ["api", "Questionnaires", "{{id}}"]
+        }
+      }
+    },
+    {
+      "name": "Questionnaires - POST",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Intenção de voto - Prefeito\",\n  \"description\": \"Pesquisa de intenção de voto para as eleições municipais\",\n  \"startsAt\": \"2025-01-01T00:00:00Z\",\n  \"endsAt\": \"2025-01-31T23:59:59Z\",\n  \"questions\": [\n    {\n      \"text\": \"Em quem você pretende votar para prefeito?\",\n      \"choices\": [\n        { \"text\": \"Candidato A\" },\n        { \"text\": \"Candidato B\" },\n        { \"text\": \"Branco/Nulo\" }\n      ]\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/Questionnaires",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5222",
+          "path": ["api", "Questionnaires"]
+        }
+      }
+    }
+  ]
+}

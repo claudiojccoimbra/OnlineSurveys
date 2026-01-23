@@ -2,10 +2,10 @@
 using Microsoft.OpenApi.Models;
 using OnlineSurveys.Infrastructure.Persistence;
 using System.Text.Json.Serialization;
+using OnlineSurveys.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Controllers
 // Controllers + JSON
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -32,7 +32,47 @@ builder.Services.AddDbContext<SurveysDbContext>(options =>
 
 var app = builder.Build();
 
-// Swagger sempre habilitado
+//
+// SEED INICIAL – cria um questionário de exemplo se o banco estiver vazio
+//
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<SurveysDbContext>();
+
+    // Garantir criação do banco InMemory
+    db.Database.EnsureCreated();
+
+    if (!db.Questionnaires.Any())
+    {
+        var questionnaire = new Questionnaire
+        {
+            Id = Guid.NewGuid(),
+            Title = "Intenção de voto - Governador",
+            Description = "Questionário de exemplo gerado automaticamente para demonstração.",
+            StartsAt = DateTime.UtcNow.Date,
+            EndsAt = DateTime.UtcNow.Date.AddDays(30),
+            Questions =
+            [
+                new Question
+                {
+                    Id = Guid.NewGuid(),
+                    Text = "Em quem você pretende votar para prefeito?",
+                    Order = 1,
+                    Choices =
+                    [
+                        new Choice { Id = Guid.NewGuid(), Text = "Candidato A", Order = 1 },
+                        new Choice { Id = Guid.NewGuid(), Text = "Candidato B", Order = 2 },
+                        new Choice { Id = Guid.NewGuid(), Text = "Branco/Nulo",   Order = 3 }
+                    ]
+                }
+            ]
+        };
+
+        db.Questionnaires.Add(questionnaire);
+        db.SaveChanges();
+    }
+}
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
